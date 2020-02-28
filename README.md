@@ -19,6 +19,11 @@ This project assumes you have already installed and setup
 5. Modify the variables.tf variable `mysql_master_password` and `mysql_replication_password` to secure your deployment. A default has been set there which isn't secure/strong password. Consider using the terraform.tfvars file
 
 ## Setup
+
+Docker daemon should be up and running to build the images
+
+Minikube/K8s instance should be available and running with the config stored and config context set in the default kube config folder
+
 The one-click.sh script will build the docker image and create a new minikube instance with the app and MySQL backing service
 
 All applications and services are deployed to dev namespace, this can be changed by setting the namespace variable in the terraform modules folder 
