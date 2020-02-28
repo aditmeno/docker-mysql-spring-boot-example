@@ -62,7 +62,7 @@ TODO :- Figure out a way to solve this bug with mounted volumes on MySQL
 Ideally a managed database solution should be used as this reduces the vector of change failure and provides better security and data protection features than would be possible on a k8s instance.
 
 ### Point 6 - Add CI to the deployment process.
-CI/CD solutions like Concourse CI or GoCD could be used to pull changes from java app git repo, run tests via mvn to ensure a broken build doesn't go through the pipeline and a build stage could then be triggered to build the docker images relating to the Java App and MySQL master and slave, and upload these images to a registry which can in turn be pulled by Kubernetes and deployed as a rollout (Blue/Greem, Canary)
+CI/CD solutions like Concourse CI or GoCD could be used to pull changes from java app git repo, run tests via mvn to ensure a broken build doesn't go through the pipeline and a build stage could then be triggered to build the docker images relating to the Java App and MySQL master and slave, and upload these images to a registry which can in turn be pulled by Kubernetes and deployed as a rollout (Blue/Green, Canary)
 
 GitOps is also an option where all code changes and config are stored in a git repo and any change made in the git repo would immediately trigger a full build, test, release cycle with managed environments to test the new change. Eg Jenkins X
 
