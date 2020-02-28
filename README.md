@@ -74,7 +74,7 @@ Another option is to spin up 3 separate k8 instances if business rules demands c
 ### Point 8 - Please suggest a monitoring solution for your system. How would you notify an admin that the resources are scarce?
 Adding Prometheus server in each pod would be an ideal way to monitor metrics. Node exporter can be used to extract metrics. These metrics could be streamed to a message queue which a monitoring application like CloudWatch or StackDriver could consume, and generate alerts based on metrics being monitored and if a message matches a alarm trigger pattern, a serverless function/application could be kicked off to alert admin of the issue
 
-Graphana or Kibana would be good tool to visualize the metrics and setup alerting based on rules around the metric being monitored
+Grafana or Kibana would be good tool to visualize the metrics and setup alerting based on rules around the metric being monitored
 
 AWS X-Ray could also be used to trace the time taken to send network calls in the app, which could help in improving potential bottlenecks in the code
 
