@@ -19,7 +19,9 @@ This project assumes you have already installed and setup
 5. Modify the variables.tf variable `mysql_master_password` and `mysql_replication_password` to secure your deployment. A default has been set there which isn't secure/strong password. Consider using the terraform.tfvars file
 
 ## Setup
-The one-click.sh script will build the docker image and create a new minikube instance.
+The one-click.sh script will build the docker image and create a new minikube instance with the app and MySQL backing service
+
+All applications and services are deployed to dev namespace, this can be changed by setting the namespace variable in the terraform modules folder 
 
 one-click.sh expects 5 arguments, namely :-
 1. App version (eg:- v1)
@@ -55,7 +57,7 @@ CI/CD solutions like Concourse CI or GoCD could be used to pull changes from jav
 
 GitOps is also an option where all code changes and config are stored in a git repo and any change made in the git repo would immediately trigger a full build, test, release cycle with managed environments to test the new change. Eg Jenkins X
 
-### Point 7 - Split your deployment into prd/qa/dev environment.
+### Point 7 - Split your deployment into prod/qa/dev environment.
 Kubernetes namespaces are an ideal way to split apps based on environment. Namespaces for dev, prod and qa are implemented in the solution, but only dev is used to deploy app and MySQL images
 
 Another option is to spin up 3 separate k8 instances if business rules demands completely isolated environments
