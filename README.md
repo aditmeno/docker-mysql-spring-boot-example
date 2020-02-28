@@ -40,9 +40,13 @@ Java app is accessible over the service so1-java-app.dev
 MySQL is accessible over the service mysql-master.dev 
 
 A way of access the services via a temporary pod :-
-1. Spin up a container - kubectl run test-client --rm --tty -i --restart='Never' --namespace dev --image docker.io/curlimages/curl:latest --command -- /bin/sh
+1. Spin up a container - `kubectl run test-client --rm --tty -i --restart='Never' --namespace dev --image docker.io/curlimages/curl:latest --command -- /bin/sh`
 2. Run the command - curl so1-java-app.dev:8086/all/
 3. Verify the json content is returned
+4. Spin up a new mysql client - `kubectl run mysql-client --rm --tty -i  --restart='Never' --namespace dev --image=docker.io/mysql:5.7 --command -- /bin/sh`
+5. Verify connection was established and that the test db has content by logging in with this command - `mysql -u sa -h mysql-master.dev -ppassword`
+6. Spin up another mysql client - `kubectl run mysql-client-1 --rm --tty -i  --restart='Never' --namespace dev --image=docker.io/mysql:5.7 --command -- /bin/sh`
+7. Verify connection was established and that the test db on slave has mirrored from the master perfectly - `mysql -u root -h mysql-slave.dev -ppassword`
 
 ### Point 5 - Can you do a HA of a database? Any way to keep the data persistent when pods are recreated?
 Implemented MySQL HA via replication cluster. 
