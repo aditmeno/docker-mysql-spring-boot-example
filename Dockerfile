@@ -25,3 +25,5 @@ COPY --from=build /root/target/users-mysql.jar .
 ENTRYPOINT ["java", "-jar", "users-mysql.jar"]
 
 EXPOSE 8086
+
+
